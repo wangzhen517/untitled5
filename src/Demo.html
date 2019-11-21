@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用单利模式实现弹窗</title>
+    <style>
+        .hide{
+            display: none;
+        }
+        .show{
+            width: 200px;
+            height: 200px;
+            background-color: brown;
+            display: block;
+        }
+    </style>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <button id="open">打开</button>
+    <button id="delete">关闭</button>
+    <div id="inner"></div>
+    <script>
+        var Model=function (id,html) {
+            this.html = html;
+            this.id = id;
+            this.open = 'false';
+        }
+        Model.prototype.create=function () {
+            if (!this.open==false){
+                var model = document.createElement('div');
+                model.interHTML = this.html;
+                model.id = this.id;
+                document.getElementById('inner').innerHTML ='';
+                document.getElementById('inner').appendChild(mode);
+                model.classList.remove('hide');
+                model.classList.add('show');
+                this.open = true;
+            }
+        }
+        Model.prototype.delete = function () {
+            if (this.open){
+                var model = document.createElement(this.id);
+                modul.classList.remove('show');
+                model.classList.add('hide');
+                this.open=false;
+            }
+        }
+        //实现单例模式
+        var createIntance = (function () {
+            var instance;
+                return instance||(instance = new Model('model','这是一个弹窗'))
+
+        });
+        var operate = {
+            setModel = null
+            open:function () {
+                this.setModel = createIntance();
+                this.setModel.create();
+            },
+            delete:function () {
+                this.setModel ? this.setModel.delete() : '';
+            }
+        }
+            document.getElementById('open').onclick = function () {
+            operate.open();
+        },
+            document.getElementById('delete').onclick = function () {
+            operate.delete();
+        }
+    </script>
+</body>
+</html>

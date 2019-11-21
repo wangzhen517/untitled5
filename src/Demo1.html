@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<script>
+    function MyCar(color,price) {
+        this.color = color;
+        this.price = price;
+    }
+    MyCar.prototype.run = function () {
+        throw new Error('抽象方法')
+    }
+    var BWM = function (color,price) {
+        MyCar.call(this,color,price)
+    }
+    BWM.prototype = {
+        run:function () {
+            console.log('')
+        }
+    }
+    var BC = function (color,price) {
+        MyCar.call(this, color,price
+    )
+        {
+        }
+    }
+    BWM.prototype = {
+        run:function () {
+            console.log('')
+        }
+    }
+    new BWM('red',1234).run();
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+    <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.js"></script>
+</head>
+<body>
+<div id="containter">
+    <p>{{a | dd}}</p>
+</div>
+</body>
+<script type="text/javascript">
+                Vue.filter('dd',function (fre) {
+                    return moment(fre).format('MMMM Do YYYY, h:mm:ss a')
+                })
+                new Vue({
+                    el:'#containter',
+                    data: {
+                         a: new Date()
+                    }
+            })
+</script>
+</html>
